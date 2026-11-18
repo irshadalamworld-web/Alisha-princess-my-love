@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6514a8">
+<title>For Alisha — My Princess</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Georgia,serif;color:#fff;background:radial-gradient(circle at 20% 10%,#a64de0 0,#7020b4 38%,#3b087d 100%);padding:28px 16px 42px;overflow-x:hidden}
+.wrap{max-width:560px;margin:auto;text-align:center}.crown{font-size:30px;margin:6px}.eyebrow{font:600 12px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:#f8d8ff}
+h1{font-size:clamp(32px,8vw,48px);line-height:1.08;margin:14px 0 10px;text-shadow:0 3px 18px #30005c}
+.sub{font:15px/1.5 Arial,sans-serif;color:#f5dfff;margin:0 auto 24px;max-width:390px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.card{border:1px solid #ffd8fa;background:linear-gradient(145deg,#ffd2f2,#f59bdc);color:#77105f;border-radius:21px;min-height:165px;padding:18px 12px;box-shadow:0 8px 20px #23004b66,inset 0 1px 0 #fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:transform .2s,filter .2s}
+.card:active{transform:scale(.97)}.num{font:11px Arial,sans-serif;align-self:flex-start;color:#a33b8b;letter-spacing:1px}.emoji{font-size:32px;margin:8px 0}.card h2{font-size:23px;font-weight:normal;font-style:italic;margin:2px 0 7px}.tap{font:12px Arial,sans-serif;color:#92317d}.secret{display:none;font:13px/1.4 Arial,sans-serif;color:#6f155c;margin-top:9px}.card.open .secret{display:block}.card.open .tap{display:none}
+.progress{font:13px Arial,sans-serif;margin:19px auto 17px;padding:9px 15px;border:1px solid #e9b8ff;border-radius:30px;background:#ffffff20;display:inline-block}
+.surprise{border:0;border-radius:40px;padding:16px 27px;color:white;font-weight:bold;font-size:16px;background:linear-gradient(90deg,#ff78c9,#ed168b);box-shadow:0 0 0 4px #ffffff20,0 8px 22px #26004c80;cursor:pointer}
+.surprise:disabled{opacity:.5;cursor:not-allowed}.note{font:12px Arial,sans-serif;color:#e9ceff;margin-top:22px}
+.overlay{display:none;position:fixed;inset:0;background:#21003beF;z-index:5;align-items:center;justify-content:center;padding:22px}.overlay.show{display:flex}.modal{max-width:430px;background:linear-gradient(145deg,#ffe0f4,#f5a7dc);color:#74105f;border-radius:25px;padding:30px 23px;box-shadow:0 15px 60px #0008}.modal h2{font-size:29px;font-style:italic;margin:5px}.modal p{font:16px/1.6 Arial,sans-serif}.close{background:#82145f;color:white;border:0;border-radius:25px;padding:11px 22px;font-size:14px}
+@media(min-width:500px){.card{min-height:178px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="crown">👑</div>
+  <div class="eyebrow">A little royal surprise</div>
+  <h1>Do You Know Why<br>Alisha Is So Special? 🌼</h1>
+  <p class="sub">Tap each royal card to reveal a little secret. Made with love, just for you. 💗</p>
+  <section class="grid" id="cards">
+    <button class="card" type="button"><span class="num">NO. 1 ✨</span><span class="emoji">☀️</span><h2>Your Smile</h2><span class="tap">tap to reveal ✨</span><span class="secret">Your smile can turn an ordinary moment into a beautiful memory.</span></button>
+    <button class="card" type="button"><span class="num">NO. 2 💗</span><span class="emoji">💖</span><h2>Your Heart</h2><span class="tap">tap to reveal ✨</span><span class="secret">Your kindness and the care you show make you truly special.</span></button>
+    <button class="card" type="button"><span class="num">NO. 3 ✨</span><span class="emoji">🌟</span><h2>Your Eyes</h2><span class="tap">tap to reveal ✨</span><span class="secret">They make even the simplest conversations feel memorable.</span></button>
+    <button class="card" type="button"><span class="num">NO. 4 🎀</span><span class="emoji">🎀</span><h2>Your Personality</h2><span class="tap">tap to reveal ✨</span><span class="secret">There is no one quite like you. Your little quirks are part of your magic.</span></button>
+    <button class="card" type="button"><span class="num">NO. 5 💪</span><span class="emoji">🦋</span><h2>Your Strength</h2><span class="tap">tap to reveal ✨</span><span class="secret">I admire how you keep being yourself and face each new day.</span></button>
+    <button class="card" type="button"><span class="num">NO. 6 🧸</span><span class="emoji">🧸</span><h2>Your Little Habits</h2><span class="tap">tap to reveal ✨</span><span class="secret">Even the smallest things you do can become my favourite memories.</span></button>
+  </section>
+  <div class="progress" id="progress">0 of 6 royal secrets revealed</div><br>
+  <button class="surprise" id="surprise" disabled>Unlock My Royal Surprise 👑</button>
+  <p class="note">A tiny website made especially for Alisha 💕</p>
+</main>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal"><div style="font-size:34px">👑💗</div><h2 id="modalTitle">To My Princess, Alisha</h2>
+ <p>You are special not because of one thing, but because of all the little things that make you YOU. I hope this brings a smile to your face. You deserve happiness, care, and beautiful moments. 💖</p>
+ <p style="font-size:20px">— With lots of love 🎀</p>
+ <button class="close" id="close">Close</button></div>
+</div>
+<script>
+const cards=[...document.querySelectorAll('.card')], progress=document.getElementById('progress'), surprise=document.getElementById('surprise');
+cards.forEach(card=>card.addEventListener('click',()=>{card.classList.add('open');const count=cards.filter(c=>c.classList.contains('open')).length;progress.textContent=`${count} of 6 royal secrets revealed`;if(count===6)surprise.disabled=false;}));
+surprise.addEventListener('click',()=>document.getElementById('overlay').classList.add('show'));
+document.getElementById('close').addEventListener('click',()=>document.getElementById('overlay').classList.remove('show'));
+document.getElementById('overlay').addEventListener('click',e=>{if(e.target.id==='overlay')e.currentTarget.classList.remove('show')});
+</script>
+</body></html>
